@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,    
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@brokers/*": ["src/brokers/*"],
+      "@utils/*": ["src/utils/*"],
+      "@mocks/*": ["test/__mocks__/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*",
+  ]
+}
