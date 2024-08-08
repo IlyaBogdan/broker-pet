@@ -37,7 +37,9 @@ const WebSocketEntry = (() => {
      */
     const getSession = (message: BrokerMessage, ws: WebSocket): WsSession => {
         let session = sessionStore.getSessionByToken(message.token);
-        if (!session) session = sessionStore.createSession(message.token, ws);
+        if (!session) {
+            session = sessionStore.createSession(message.token, ws);
+        }
 
         return session;
     }

@@ -1,11 +1,5 @@
-/**
- * Contains all methods which client can call
- */
-type BrokerApiMethod = {
-    format: any,
-    action: Function
-}
+import { Broker } from "./Broker";
 
 export type BrokerApi = {
-    [key: string]: BrokerApiMethod;
+    [key: string]: (brokerMessage: any, broker?: Broker) => void;
 }

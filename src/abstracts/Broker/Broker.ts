@@ -7,24 +7,18 @@ import { BrokerApi } from "./BrokerApi";
 export abstract class Broker {
     
     /**
-     * Broker api methods
-     */
-    public api: BrokerApi;
-
-    /**
      * Users sessions
      */
     protected sessionStore: SessionStore;
 
     constructor() {
-        this.api = this.getApi();
         this.sessionStore = new SessionStore();  
     }
 
     /**
      * Get API methods for current broker
      */
-    protected abstract getApi(): BrokerApi;
+    protected abstract get api(): BrokerApi;
 
     /**
      * Check if method exists in API of this broker
@@ -47,7 +41,7 @@ export abstract class Broker {
         if (!this.methodExists(apiMethod)) throw new Error(`Method '${apiMethod}' not exists`);
 
         return (message) => {
-            return this.api[apiMethod].action(message, this);
+            return this.api[apiMethod](message, this);
         }
     }
 

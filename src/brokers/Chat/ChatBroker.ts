@@ -20,7 +20,7 @@ export class ChatBroker extends Broker {
     /**
      * @inheritdoc
      */
-    protected getApi(): BrokerApi {
+    protected get api(): BrokerApi {
         return api;
     }
 
@@ -59,7 +59,7 @@ export class ChatBroker extends Broker {
      */
     public actualizeChatInfo(chat: ChatDto, onlineUsers: Array<number>): void {
         const sessions = this.sessionStore.getSessions().filter((session) => {
-            return onlineUsers.indexOf(session.getUser().id) != -1 && session.getOnline();
+            return onlineUsers.indexOf(session.getUser()?.id) !== -1 && session.getOnline();
         });
 
         let connections = [];
@@ -69,7 +69,10 @@ export class ChatBroker extends Broker {
             })
         });
 
-        this.broadcastForUsers(connections, { method: 'activeChat', chat: Object.assign(chat, { online: onlineUsers })});
+        this.broadcastForUsers(connections, { 
+            method: 'activeChat',
+            chat: { online: onlineUsers, ...chat }
+        });
     }
 
     /**
@@ -115,7 +118,12 @@ export class ChatBroker extends Broker {
             })
         });
         
-        this.broadcastForUsers(connections, { method: 'userTyping', user: who, chat, state: state });
+        this.broadcastForUsers(connections, { 
+            method: 'userTyping',
+            user: who,
+            chat,
+            state: state 
+        });
     }
 
     /**
