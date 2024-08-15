@@ -6,6 +6,6 @@ import { UserDto } from "../../dto/user.dto";
 /**
  * Mock data for chat list
  */
-export const mockChatList: Array<ChatDto> = [mockChat_1, mockChat_2];
+export const mockChatList: ChatDto[] = [mockChat_1, mockChat_2];
 
-export const mockOnlineUsers: Array<UserDto> = [mockUser_1, mockUser_2];
+export const mockOnlineUsers: UserDto[] = [mockUser_1, mockUser_2];

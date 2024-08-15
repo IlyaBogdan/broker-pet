@@ -8,4 +8,4 @@ import { UserDto } from "../../dto/user.dto";
  */
 export const mockCreateChat: ChatDto = mockChat_1;
 
-export const mockOnlineUsers: Array<UserDto> = [mockUser_1, mockUser_2];
+export const mockOnlineUsers: UserDto[] = [mockUser_1, mockUser_2];
