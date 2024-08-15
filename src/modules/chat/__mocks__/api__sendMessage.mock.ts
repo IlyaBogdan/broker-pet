@@ -1,7 +1,7 @@
 import { mockChat_1 } from "../../../../test/__mocks__/chat/chats";
 import { mockUser_1, mockUser_2 } from "../../../../test/__mocks__/chat/users";
-import { ChatDto } from "../dto/chat.dto";
-import { UserDto } from "../dto/user.dto";
+import { ChatDto } from "../dto/chat";
+import { UserDto } from "../dto/user";
 
 /**
  * Mock data for chat info

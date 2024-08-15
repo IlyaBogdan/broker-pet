@@ -1,9 +1,8 @@
-import { UserDto } from '../../../src/brokers/Chat/dto/user.dto';
+import { UserDto } from '@chat/dto/user';
 
 /**
  * Mock data for users
  */
-
 export const mockUser_1: UserDto = {
     id: 1,
     email: 'someuser@gmail.com',

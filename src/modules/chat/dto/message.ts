@@ -1,4 +1,4 @@
-import { UserDto } from "./user.dto"
+import { UserDto } from "./user"
 
 export type MessageDto = {
     id?: number,

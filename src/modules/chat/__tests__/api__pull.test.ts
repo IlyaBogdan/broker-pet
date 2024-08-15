@@ -2,9 +2,9 @@ import { assert } from 'chai';
 import fetchMock from 'fetch-mock';
 import { BACKEND_URL } from '../../../utils/backendRequest';
 import { mockUserInfo } from '../__mocks__/api__pull.mock';
-import { ChatBroker } from '../ChatBroker';
-import { EChatResponses } from '../EChatResponses';
-import { IChatBrokerMessage } from '../IChatBrokerMessage';
+import { ChatBroker } from '../broker';
+import { EChatResponses } from '../broker/response';
+import { IChatBrokerMessage } from '../broker/message';
 
 const userToken = '345678iaisdauh';
 const url = `${BACKEND_URL}/api/user?token=${userToken}`;

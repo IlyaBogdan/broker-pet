@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import WebSocket from 'ws';
-import { UserDto } from "./brokers/Chat/dto/user.dto";
+import { UserDto } from '@chat/dto/user';
 
 /**
  * Interface describes user connection to broker

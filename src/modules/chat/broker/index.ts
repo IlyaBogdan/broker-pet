@@ -1,8 +1,8 @@
-import { Broker } from '../../abstracts/Broker/Broker';
-import { api } from './api';
-import { BrokerApi } from '../../abstracts/Broker/BrokerApi';
-import { UserDto } from './dto/user.dto';
-import { ChatDto } from './dto/chat.dto';
+import { Broker } from '@src/libs/Broker/Broker';
+import { api } from '../api';
+import { BrokerApi } from '@src/libs/Broker/BrokerApi';
+import { UserDto } from '../dto/user';
+import { ChatDto } from '../dto/chat';
 import WebSocket from 'ws';
 
 interface IBroadcastChatMessage {
@@ -15,7 +15,7 @@ export class ChatBroker extends Broker {
     /**
      * List of chats
      */
-    private activeChats: Array<ChatDto> = []
+    private activeChats: ChatDto[] = []
 
     /**
      * @inheritdoc
@@ -39,10 +39,10 @@ export class ChatBroker extends Broker {
     /**
      * Returns list of connected users
      * 
-     * @param {Array<number>} users list of user's ID
-     * @returns {Array<UserDto>} list of online users in chat
+     * @param {number[]} users list of user's ID
+     * @returns {UserDto[]} list of online users in chat
      */
-    public getUsersOnline(users: Array<number>): Array<UserDto> {
+    public getUsersOnline(users: number[]): UserDto[] {
         const sessions = this.sessionStore.getSessions().filter((session) => {
             return users.indexOf(session.getUser()?.id) != -1 && session.getOnline();
         });
@@ -54,10 +54,10 @@ export class ChatBroker extends Broker {
      * Sends all users in chat actual info about it
      * 
      * @param {ChatDto} chat chat info 
-     * @param {Array<number>} onlineUsers list of online user's ID in chat
+     * @param {number[]} onlineUsers list of online user's ID in chat
      * @returns {void}
      */
-    public actualizeChatInfo(chat: ChatDto, onlineUsers: Array<number>): void {
+    public actualizeChatInfo(chat: ChatDto, onlineUsers: number[]): void {
         const sessions = this.sessionStore.getSessions().filter((session) => {
             return onlineUsers.indexOf(session.getUser()?.id) !== -1 && session.getOnline();
         });
@@ -97,12 +97,12 @@ export class ChatBroker extends Broker {
      * Shows other users that somebody in chat is typing new message
      * 
      * @param {UserDto} who typing user
-     * @param {Array<UserDto>} users users that will be notified
+     * @param {UserDto[]} users users that will be notified
      * @param {number} chatId chat ID
      * @param {boolean} state typing or no
      * @returns {void}
      */
-    public notifyUserTyping(who: UserDto, users: Array<UserDto>, chatId: number, state: Boolean): void {
+    public notifyUserTyping(who: UserDto, users: UserDto[], chatId: number, state: Boolean): void {
         const chat = this.activeChats.filter((chat) => chat.id == chatId)[0];
         const userIds = users.map(user => user.id);
 
@@ -129,11 +129,11 @@ export class ChatBroker extends Broker {
     /**
      * Notify all users in chat that somebody send new message
      * 
-     * @param sessions user's sessions in that will be sended broadcast message
+     * @param {WebSocket[]} sessions user's sessions in that will be sended broadcast message
      * @param {IBroadcastChatMessage} message broadcast message info
      * @returns {void}
      */
-    protected broadcastForUsers(sessions: Array<WebSocket>, message: IBroadcastChatMessage): void {
+    protected broadcastForUsers(sessions: WebSocket[], message: IBroadcastChatMessage): void {
         sessions.forEach((session) => {
             session.send(JSON.stringify(message));
         });

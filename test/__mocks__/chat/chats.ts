@@ -1,4 +1,4 @@
-import { ChatDto } from '../../../src/brokers/Chat/dto/chat.dto';
+import { ChatDto } from '@chat/dto/chat';
 import { mockUser_1, mockUser_2, mockUser_3 } from './users'
 import { mockMessage_1, mockMessage_2, mockMessage_3, mockMessage_4, mockMessage_5, mockMessage_6 } from './messages';
 

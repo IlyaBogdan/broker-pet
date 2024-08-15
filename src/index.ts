@@ -1,6 +1,7 @@
+require('module-alias/register');
 import WebSocket, { WebSocketServer, RawData } from 'ws';
-import { execute } from './brokers/BrokerProvider';
-import { BrokerMessage } from './abstracts/Broker/BrokerMessage';
+import { execute } from './brokers';
+import { BrokerMessage } from './libs/Broker/BrokerMessage';
 import { SessionStore, WsSession } from './SessionStore';
 import { request } from './utils/backendRequest';
 import { ERequestMethods } from './utils/ERequestMethods';

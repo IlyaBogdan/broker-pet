@@ -1,5 +1,5 @@
-import { UserDto } from "./user.dto";
-import { MessageDto } from "./message.dto";
+import { UserDto } from "./user";
+import { MessageDto } from "./message";
 
 enum ChatTypes { 
     CHAT = 1,

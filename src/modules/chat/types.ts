@@ -1,5 +1,5 @@
-import { ChatDto } from "./dto/chat.dto"
-import { UserDto } from "./dto/user.dto"
+import { ChatDto } from "./dto/chat"
+import { UserDto } from "./dto/user"
 
 export type TPullBrokerMessageFormat = {
     token: string,

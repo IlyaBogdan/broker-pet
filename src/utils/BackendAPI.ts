@@ -1,5 +1,5 @@
 import { request } from "./backendRequest";
-import chatModule from "./chat/chatModule";
+import chatModule from "@chat/chatModule";
 import { ERequestMethods } from "./ERequestMethods";
 
 const BackendAPI: any = {
@@ -14,9 +14,9 @@ const BackendAPI: any = {
             request(`/user/list`, {}, ERequestMethods.GET)
                 .then((response) => { resolve(response) });
         });
-    }
-};
+    },
 
-Object.assign(BackendAPI, chatModule);
+    ...chatModule
+};
 
 export { BackendAPI }

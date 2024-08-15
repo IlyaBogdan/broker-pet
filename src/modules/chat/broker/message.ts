@@ -1,5 +1,5 @@
-import { MessageDto } from "./dto/message.dto";
-import { UserDto } from "./dto/user.dto";
+import { MessageDto } from "../dto/message";
+import { UserDto } from "../dto/user";
 
 interface IUserIncomming {
     id: number,

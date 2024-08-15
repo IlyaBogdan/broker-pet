@@ -1,9 +1,9 @@
 import { assert } from 'chai';
 import fetchMock from 'fetch-mock';
-import { ChatBroker } from '../ChatBroker';
-import { IChatBrokerMessage } from '../IChatBrokerMessage';
+import { ChatBroker } from '../broker';
+import { IChatBrokerMessage } from '../broker/message';
 import { BACKEND_URL } from '../../../utils/backendRequest';
-import { EChatResponses } from '../EChatResponses';
+import { EChatResponses } from '../broker/response';
 import { mockCreateChat, mockOnlineUsers } from '../__mocks__/api__createChat.mock';
 import { mockMessage_1 } from '../../../../test/__mocks__/chat/messages';
 import { mockUser_1, mockUser_2 } from '../../../../test/__mocks__/chat/users';

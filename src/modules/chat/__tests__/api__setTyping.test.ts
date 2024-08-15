@@ -1,7 +1,7 @@
 import { assert } from 'chai';
-import { IChatBrokerMessage } from '../IChatBrokerMessage';
-import { ChatBroker } from '../ChatBroker';
-import { EChatResponses } from '../EChatResponses';
+import { IChatBrokerMessage } from '../broker/message';
+import { ChatBroker } from '../broker';
+import { EChatResponses } from '../broker/response';
 import { mockChat_1 } from '../../../../test/__mocks__/chat/chats';
 import { mockUser_1, mockUser_2 } from '../../../../test/__mocks__/chat/users';
 

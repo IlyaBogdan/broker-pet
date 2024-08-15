@@ -1,10 +1,10 @@
-import { BrokerApi } from "../../abstracts/Broker/BrokerApi";
-import { IChatBrokerMessage } from "./IChatBrokerMessage";
-import { BackendAPI } from "../../utils/BackendAPI";
-import { UserDto } from "./dto/user.dto";
-import { ChatDto } from "./dto/chat.dto";
-import { ChatBroker } from "./ChatBroker";
-import { EChatResponses } from "./EChatResponses";
+import { BrokerApi } from "@src/libs/Broker/BrokerApi";
+import { IChatBrokerMessage } from "./broker/message";
+import { BackendAPI } from "@src/utils/BackendAPI";
+import { UserDto } from "./dto/user";
+import { ChatDto } from "./dto/chat";
+import { ChatBroker } from "./broker";
+import { EChatResponses } from "./broker/response";
 import { TGetChatMessageFormat, TPullBrokerMessageFormat } from "./types";
 
 /**

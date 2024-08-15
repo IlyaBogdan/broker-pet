@@ -10,8 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
-      "@brokers/*": ["src/brokers/*"],
-      "@utils/*": ["src/utils/*"],
+      "@chat/*": ["src/modules/chat/*"],
       "@mocks/*": ["test/__mocks__/*"]
     }
   },

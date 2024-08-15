@@ -1,7 +1,7 @@
-import { request } from "../backendRequest";
-import { ChatDto } from "../../brokers/Chat/dto/chat.dto";
-import { MessageDto } from "../../brokers/Chat/dto/message.dto";
-import { ERequestMethods } from "../ERequestMethods";
+import { request } from "@src/utils/backendRequest";
+import { ChatDto } from "./dto/chat";
+import { MessageDto } from "./dto/message";
+import { ERequestMethods } from "@src/utils/ERequestMethods";
 
 /**
  * Module for real-time chat
