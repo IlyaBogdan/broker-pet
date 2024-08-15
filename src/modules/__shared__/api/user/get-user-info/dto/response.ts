@@ -1,3 +1,6 @@
 import { UserDto } from "@src/modules/chat/dto/user";
 
-export type TGetUserListResponse = UserDto[];
+/**
+ * Response with user list
+ */
+export type TGetUserInfoResponse = UserDto;

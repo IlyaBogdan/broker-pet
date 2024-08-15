@@ -1,12 +1,12 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '../../../../utils/backendRequest';
-import { ChatBroker } from '../../broker';
-import { IChatBrokerMessage } from '../../broker/message';
+import { BACKEND_URL } from '@src/utils/backendRequest';
+import { ChatBroker } from '..';
+import { IChatBrokerMessage } from '../message';
 import fetchMock from 'fetch-mock';
-import { mockSendMessage, mockOnlineUsers } from '../__mocks__/api__sendMessage.mock';
-import { EChatResponses } from '../../broker/response';
-import { mockUser_1, mockUser_2 } from '../../../../../test/__mocks__/chat/users';
-import { mockMessage_1 } from '../../../../../test/__mocks__/chat/messages';
+import { mockSendMessage, mockOnlineUsers } from '../__mocks__/sendMessage.mock';
+import { EChatResponses } from '../response';
+import { mockUser_1, mockUser_2 } from '@mocks/chat/users';
+import { mockMessage_1 } from '@mocks/chat/messages';
 
 const userToken = '345678iaisdauh';
 const url = `${BACKEND_URL}/api/chat/${mockSendMessage.id}/save-message`;

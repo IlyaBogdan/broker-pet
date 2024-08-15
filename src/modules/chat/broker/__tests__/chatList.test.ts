@@ -1,11 +1,11 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '../../../../utils/backendRequest';
-import { ChatBroker } from '../../broker';
-import { IChatBrokerMessage } from '../../broker/message';
+import { BACKEND_URL } from '@src/utils/backendRequest';
+import { ChatBroker } from '..';
+import { IChatBrokerMessage } from '../message';
 import fetchMock from 'fetch-mock';
-import { EChatResponses } from '../../broker/response';
-import { mockChatList, mockOnlineUsers } from '../__mocks__/api__chatList.mock';
-import { mockUser_1 } from '../../../../../test/__mocks__/chat/users';
+import { EChatResponses } from '../response';
+import { mockChatList, mockOnlineUsers } from '../__mocks__/chatList.mock';
+import { mockUser_1 } from '@mocks/chat/users';
 
 const userToken = '345678iaisdauh';
 const url = `${BACKEND_URL}/api/chat/list?user=${mockUser_1.id}`;

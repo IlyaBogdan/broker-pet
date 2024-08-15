@@ -15,4 +15,4 @@ export type TCreateChatParams = {
      * @example EChatTypes.DIALOG
      */
     type: EChatTypes
-}
+};

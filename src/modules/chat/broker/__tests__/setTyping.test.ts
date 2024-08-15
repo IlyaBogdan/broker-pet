@@ -1,9 +1,9 @@
 import { assert } from 'chai';
-import { IChatBrokerMessage } from '../../broker/message';
-import { ChatBroker } from '../../broker';
-import { EChatResponses } from '../../broker/response';
-import { mockChat_1 } from '../../../../../test/__mocks__/chat/chats';
-import { mockUser_1, mockUser_2 } from '../../../../../test/__mocks__/chat/users';
+import { IChatBrokerMessage } from '../message';
+import { ChatBroker } from '..';
+import { EChatResponses } from '../response';
+import { mockChat_1 } from '@mocks/chat/chats';
+import { mockUser_1, mockUser_2 } from '@mocks/chat/users';
 
 const userToken = '345678iaisdauh';
 const chatBroker = new ChatBroker();

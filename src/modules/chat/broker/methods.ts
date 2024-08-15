@@ -1,10 +1,11 @@
 import { IChatBrokerMessage } from "./message";
-import { BackendAPI } from "@src/utils/BackendAPI";
 import { UserDto } from "../dto/user";
 import { ChatDto } from "../dto/chat";
 import { ChatBroker } from ".";
 import { EChatResponses } from "./response";
 import { TGetChatMessageFormat, TPullBrokerMessageFormat } from "../types";
+import { createChat } from "../api/chat/create";
+import { getUserInfo } from "@src/modules/__shared__/api/user/get-user-info";
 
 /**
  * Chat broker methods
@@ -17,7 +18,7 @@ export default {
      */
     pull: (body: TPullBrokerMessageFormat, broker: ChatBroker) => {
         return new Promise((resolve, reject) => {
-            BackendAPI.getUserByToken(body.token)
+            getUserInfo({ token: body.token })
                 .then((response: UserDto) => {
                     broker.setOnlineUser(body.token, response);
                     resolve({
@@ -46,13 +47,13 @@ export default {
      */
     createChat: (body: IChatBrokerMessage, broker: ChatBroker) => {
         const users: number[] = body.users;
-        const chat = {
+        const chatInfo = {
             users,
             type: users.length > 2 ? 1 : 0
         };
 
         return new Promise((resolve, reject) => {
-            BackendAPI.createChat(chat)
+            createChat(chatInfo)
                 .then((response: ChatDto) => {
                     broker.setActiveChat(body.token, response);
                     const users = broker.getUsersOnline(body.users);
