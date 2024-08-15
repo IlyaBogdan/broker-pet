@@ -1,4 +1,4 @@
-import { UserDto } from "../../dto/user.dto";
+import { UserDto } from "../dto/user.dto";
 import { mockUser_1, mockUser_2, mockUser_3 } from "../../../../test/__mocks__/chat/users";
 
 /**

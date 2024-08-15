@@ -1,8 +1,8 @@
 import { Broker } from '../../abstracts/Broker/Broker';
 import { api } from './api';
 import { BrokerApi } from '../../abstracts/Broker/BrokerApi';
-import { UserDto } from '../dto/user.dto';
-import { ChatDto } from '../dto/chat.dto';
+import { UserDto } from './dto/user.dto';
+import { ChatDto } from './dto/chat.dto';
 import WebSocket from 'ws';
 
 interface IBroadcastChatMessage {

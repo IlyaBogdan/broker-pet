@@ -1,6 +1,6 @@
 import { request } from "../backendRequest";
-import { ChatDto } from "../../brokers/dto/chat.dto";
-import { MessageDto } from "../../brokers/dto/message.dto";
+import { ChatDto } from "../../brokers/Chat/dto/chat.dto";
+import { MessageDto } from "../../brokers/Chat/dto/message.dto";
 import { ERequestMethods } from "../ERequestMethods";
 
 /**

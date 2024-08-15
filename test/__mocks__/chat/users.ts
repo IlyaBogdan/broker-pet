@@ -1,4 +1,4 @@
-import { UserDto } from '../../../src/brokers/dto/user.dto';
+import { UserDto } from '../../../src/brokers/Chat/dto/user.dto';
 
 /**
  * Mock data for users

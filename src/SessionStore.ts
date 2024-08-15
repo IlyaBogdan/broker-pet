@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import WebSocket from 'ws';
-import { UserDto } from "./brokers/dto/user.dto";
+import { UserDto } from "./brokers/Chat/dto/user.dto";
 
 /**
  * Interface describes user connection to broker
@@ -20,7 +20,7 @@ interface IConnection {
     /**
      * Subscribed broker events
      */
-    listenEvents: Array<any>,
+    listenEvents: any[],
 
     /**
      * Additional other params
@@ -174,7 +174,7 @@ export class WsSession {
      * @param users 
      * @returns 
      */
-    public getOnlineUsersFromLists(users: Array<UserDto>): Array<IConnection> {
+    public getOnlineUsersFromLists(users: UserDto[]): IConnection[] {
         const connections = this.connections;
 
         return connections;

@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
-import { ChatDto } from "../../dto/chat.dto";
-import { UserDto } from "../../dto/user.dto";
+import { ChatDto } from "../dto/chat.dto";
+import { UserDto } from "../dto/user.dto";
 
 export class UserTyping extends EventEmitter {
 

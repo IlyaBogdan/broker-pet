@@ -7,4 +7,4 @@ export enum ERequestMethods {
     PUT = 'PUT',
     DELETE = 'DELETE',
     PATCH = 'PATCH'
-} 
+}
