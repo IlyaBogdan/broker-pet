@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { ERequestMethods } from './ERequestMethods';
+import { ERequestMethods } from '../../utils/ERequestMethods';
 var Storage = require('node-storage');
 
 const store = new Storage('./store.json');
@@ -26,6 +26,7 @@ const request = async (endpoint: string, data: any, method: ERequestMethods): Pr
     if (BROKER_TOKEN) {
         requestInit.headers['X-Broker-Token'] = BROKER_TOKEN;
     }
+    
     if (['GET', 'HEAD'].indexOf(method) == -1) {
         requestInit['body'] = JSON.stringify(data);
     }

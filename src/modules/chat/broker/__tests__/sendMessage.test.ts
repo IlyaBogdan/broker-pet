@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import { ChatBroker } from '..';
 import { IChatBrokerMessage } from '../message';
 import fetchMock from 'fetch-mock';

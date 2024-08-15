@@ -1,8 +1,8 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import fetchMock from 'fetch-mock';
 import { getUserChats } from '../get-user-chats';
-import { mockGetUserChats } from '../__mocks__/getUserChats';
+import { mockGetUserChats, mockUserChatsSuccessfullyAccepted } from '../__mocks__/getUserChats';
 
 const userId = 123;
 const url = `${BACKEND_URL}/api/chat/${userId}`;
@@ -20,7 +20,7 @@ describe('Test for API request getUserChats()', () => {
     
     getUserChats({ userId })
         .then((result) => {
-            assert.equal(result, mockGetUserChats);
+            assert.equal(result, mockUserChatsSuccessfullyAccepted);
         });
   });
 });

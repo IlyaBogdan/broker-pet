@@ -1,8 +1,8 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import fetchMock from 'fetch-mock';
 import { getUserInfo } from '../get-user-info';
-import { mockGetUserInfo } from '../__mocks__/getUserInfo';
+import { mockGetUserInfo, mockUserInfoSuccessfullyAccepted } from '../__mocks__/getUserInfo';
 
 const url = `${BACKEND_URL}/api/user`;
 const token = '123123safawqeas';
@@ -21,7 +21,7 @@ describe('Test for API request getUserInfo()', () => {
     
     getUserInfo({ token })
         .then((result) => {
-            assert.equal(result, mockGetUserInfo);
+            assert.equal(result, mockUserInfoSuccessfullyAccepted);
         });
   });
 });

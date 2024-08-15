@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import fetchMock from 'fetch-mock';
-import { BACKEND_URL } from '@src/utils/backendRequest';
-import { mockCreateChat } from '../__mocks__/createChat';
+import { BACKEND_URL } from '@src/libs/request/request';
+import { mockCreateChat, mockChatSuccessfullyCreated } from '../__mocks__/createChat';
 import { mockUser_1, mockUser_2 } from '@mocks/chat/users';
 import { createChat } from '../create';
 import { EChatTypes } from '@src/modules/chat/dto/chat';
@@ -26,7 +26,7 @@ describe('Test for API request createChat()', () => {
     
     createChat(params)
       .then((result) => {
-        assert.equal(result, mockCreateChat);
+        assert.equal(result, mockChatSuccessfullyCreated);
       });
   });
 });

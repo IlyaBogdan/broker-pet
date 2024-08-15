@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import fetchMock from 'fetch-mock';
 import { mockGetUserList } from '../__mocks__/getUserList';
 import { getUserList } from '../get-user-list';

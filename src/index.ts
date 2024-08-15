@@ -3,7 +3,7 @@ import WebSocket, { WebSocketServer, RawData } from 'ws';
 import { execute } from './brokers';
 import { BrokerMessage } from './libs/Broker/BrokerMessage';
 import { SessionStore, WsSession } from './SessionStore';
-import { request } from './utils/backendRequest';
+import { request } from './libs/request/request';
 import { ERequestMethods } from './utils/ERequestMethods';
 import { PORT } from './consts';
 var Storage = require('node-storage');

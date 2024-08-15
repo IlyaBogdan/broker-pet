@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { EChatResponses } from '../response';
 import { IChatBrokerMessage } from '../message';
 import { ChatBroker } from '..';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import fetchMock from 'fetch-mock';
 import { mockGetChat, mockOnlineUsers } from '../__mocks__/getChat';
 

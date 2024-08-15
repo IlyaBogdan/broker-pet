@@ -1,8 +1,8 @@
 import { assert } from 'chai';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import fetchMock from 'fetch-mock';
 import { mockMessage_1 } from '@mocks/chat/messages';
-import { mockSaveMessage } from '../__mocks__/saveMessage';
+import { mockMessageSuccesfullySaved, mockSaveMessage } from '../__mocks__/saveMessage';
 import { saveMessage } from '../message/save';
 import { mockUser_1 } from '@mocks/chat/users';
 
@@ -31,7 +31,7 @@ describe('Test for API request saveMessage()', () => {
     
     saveMessage(params)
       .then((result) => {
-        assert.equal(result, mockSaveMessage);
+        assert.equal(result, mockMessageSuccesfullySaved);
       });
   });
 });

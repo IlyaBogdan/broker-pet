@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import fetchMock from 'fetch-mock';
-import { BACKEND_URL } from '@src/utils/backendRequest';
+import { BACKEND_URL } from '@src/libs/request/request';
 import { mockUserInfo } from '../__mocks__/pull';
 import { ChatBroker } from '..';
 import { EChatResponses } from '../response';

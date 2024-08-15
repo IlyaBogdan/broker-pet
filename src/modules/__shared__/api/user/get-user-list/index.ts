@@ -1,4 +1,4 @@
-import { request } from "@src/utils/backendRequest";
+import { request } from "@src/libs/request/request";
 import { ERequestMethods } from "@src/utils/ERequestMethods";
 import { TGetUserListResponse } from "./dto/response";
 

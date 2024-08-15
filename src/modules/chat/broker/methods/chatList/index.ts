@@ -1,16 +1,26 @@
-import { getUserChats } from "../../../api/chat/get-user-chats";
-import { ChatDto } from "../../../dto/chat";
-import { IChatBrokerMessage } from "../../message";
+import { getUserChats } from "@chat/api/chat/get-user-chats";
 import { EChatResponses } from "../../response";
+import { TChatListParams } from "./message";
+import { TChatListResponse } from "./response";
 
 /**
  * This method return chat list for current user
+ * 
+ * @param {TChatListParams} body
+ * @returns {Promise<TChatListResponse>}
  */
-export const chatList = (body: IChatBrokerMessage) => {
+export const chatList = (body: TChatListParams): Promise<TChatListResponse> => {
     return new Promise((resolve, reject) => {
         getUserChats({ userId: body.user.id })
-            .then((chats: ChatDto[]) => {
-                resolve({ method: EChatResponses.userDialogs, chats });
+            .then((response) => {
+                if (response.isSuccess) {
+                    resolve({ 
+                        method: EChatResponses.userDialogs,
+                        chats: response.payload
+                    });
+                } else {
+                    //
+                }
             });
     });
 };
