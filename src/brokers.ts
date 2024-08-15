@@ -1,4 +1,4 @@
-import { BrokerApi } from "./libs/Broker/BrokerApi";
+import { BrokerMethods } from "./libs/Broker/types";
 import { ChatBroker } from "./modules/chat/broker";
 
 const brokers = [
@@ -15,9 +15,9 @@ const execute = (message: { method: string }) => {
     let result;
 
     for (const broker of brokers) {
-        if (broker.methodExists(message.method as keyof BrokerApi)) {
+        if (broker.methodExists(message.method as keyof BrokerMethods)) {
             console.log(`Runnning: ${message.method}`);
-            const closure = broker.call(message.method as keyof BrokerApi);
+            const closure = broker.call(message.method as keyof BrokerMethods);
             result = closure(message);
         }
     }

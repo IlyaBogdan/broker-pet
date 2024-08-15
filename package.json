@@ -55,6 +55,7 @@
   "_moduleAliases": {
     "@src": "./src",
     "@chat": "./src/modules/chat",
+    "@shared": "src/modules/__shared__",
     "@mocks": "./test/__mocks__"
   }
 }

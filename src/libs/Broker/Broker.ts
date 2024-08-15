@@ -1,5 +1,5 @@
 import { SessionStore } from "../../SessionStore";
-import { BrokerApi } from "./BrokerApi";
+import { BrokerMethods } from "./types";
 
 /**
  * Abstract broker class
@@ -18,7 +18,7 @@ export abstract class Broker {
     /**
      * Get API methods for current broker
      */
-    protected abstract get api(): BrokerApi;
+    protected abstract get methods(): BrokerMethods;
 
     /**
      * Check if method exists in API of this broker
@@ -26,22 +26,22 @@ export abstract class Broker {
      * @param {string} method 
      * @returns {boolean}
      */
-    public methodExists(method: keyof typeof this.api): boolean {
-        return this.api.hasOwnProperty(method);
+    public methodExists(method: keyof typeof this.methods): boolean {
+        return this.methods.hasOwnProperty(method);
     }
 
     /**
      * Execute broker method
      * 
-     * @param {string} apiMethod 
+     * @param {string} brokerMethod 
      * @returns {any}
      * @throws Method 'apiMethod' not exists
      */
-    public call(apiMethod: keyof typeof this.api): any {
-        if (!this.methodExists(apiMethod)) throw new Error(`Method '${apiMethod}' not exists`);
+    public call(brokerMethod: keyof typeof this.methods): any {
+        if (!this.methodExists(brokerMethod)) throw new Error(`Method '${brokerMethod}' not exists`);
 
         return (message) => {
-            return this.api[apiMethod](message, this);
+            return this.methods[brokerMethod](message, this);
         }
     }
 

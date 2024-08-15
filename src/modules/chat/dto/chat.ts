@@ -1,7 +1,7 @@
 import { UserDto } from "./user";
 import { MessageDto } from "./message";
 
-enum ChatTypes { 
+export enum EChatTypes { 
     CHAT = 1,
     DIALOG = 0 
 }
@@ -9,7 +9,7 @@ enum ChatTypes {
 export type ChatDto = {
     id?: number,
     title?: String,
-    type: ChatTypes,
+    type: EChatTypes,
     users: Array<UserDto | number>,
     messages?: Array<MessageDto>,
     created_at?: Date,

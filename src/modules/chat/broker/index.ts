@@ -1,6 +1,6 @@
 import { Broker } from '@src/libs/Broker/Broker';
-import { api } from '../api';
-import { BrokerApi } from '@src/libs/Broker/BrokerApi';
+import methods from './methods';
+import { BrokerMethods } from '@src/libs/Broker/types';
 import { UserDto } from '../dto/user';
 import { ChatDto } from '../dto/chat';
 import WebSocket from 'ws';
@@ -20,8 +20,8 @@ export class ChatBroker extends Broker {
     /**
      * @inheritdoc
      */
-    protected get api(): BrokerApi {
-        return api;
+    protected get methods(): BrokerMethods {
+        return methods;
     }
 
     /**

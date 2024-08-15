@@ -1,16 +1,15 @@
-import { BrokerApi } from "@src/libs/Broker/BrokerApi";
-import { IChatBrokerMessage } from "./broker/message";
+import { IChatBrokerMessage } from "./message";
 import { BackendAPI } from "@src/utils/BackendAPI";
-import { UserDto } from "./dto/user";
-import { ChatDto } from "./dto/chat";
-import { ChatBroker } from "./broker";
-import { EChatResponses } from "./broker/response";
-import { TGetChatMessageFormat, TPullBrokerMessageFormat } from "./types";
+import { UserDto } from "../dto/user";
+import { ChatDto } from "../dto/chat";
+import { ChatBroker } from ".";
+import { EChatResponses } from "./response";
+import { TGetChatMessageFormat, TPullBrokerMessageFormat } from "../types";
 
 /**
- * API methods for chat broker
+ * Chat broker methods
  */
-export const api: BrokerApi = {
+export default {
 
     /**
      * This method set user online and notify all users, who has opened
@@ -46,7 +45,7 @@ export const api: BrokerApi = {
      * From backend we accept actual info about chat
      */
     createChat: (body: IChatBrokerMessage, broker: ChatBroker) => {
-        const users: Array<number> = body.users;
+        const users: number[] = body.users;
         const chat = {
             users,
             type: users.length > 2 ? 1 : 0
