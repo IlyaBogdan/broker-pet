@@ -4,7 +4,7 @@ import { ChatBroker } from '..';
 import { IChatBrokerMessage } from '../message';
 import { BACKEND_URL } from '@src/utils/backendRequest';
 import { EChatResponses } from '../response';
-import { mockCreateChat, mockOnlineUsers } from '../__mocks__/createChat.mock';
+import { mockCreateChat, mockOnlineUsers } from '../__mocks__/createChat';
 import { mockMessage_1 } from '@mocks/chat/messages';
 import { mockUser_1, mockUser_2 } from '@mocks/chat/users';
 
@@ -23,6 +23,7 @@ describe('Test for API methods of ChatBroker (`createChat`)', () => {
       url,
       method: 'POST',
       body: mockMessage_1,
+      overwriteRoutes: false,
 
       response: mockCreateChat
     });

@@ -3,7 +3,7 @@ import { BACKEND_URL } from '@src/utils/backendRequest';
 import { ChatBroker } from '..';
 import { IChatBrokerMessage } from '../message';
 import fetchMock from 'fetch-mock';
-import { mockSendMessage, mockOnlineUsers } from '../__mocks__/sendMessage.mock';
+import { mockSendMessage, mockOnlineUsers } from '../__mocks__/sendMessage';
 import { EChatResponses } from '../response';
 import { mockUser_1, mockUser_2 } from '@mocks/chat/users';
 import { mockMessage_1 } from '@mocks/chat/messages';
@@ -27,6 +27,7 @@ describe('Test for API methods of ChatBroker (`sendMessage`)', () => {
       url,
       method: 'PUT',
       body: mockMessage_1,
+      overwriteRoutes: false,
 
       response: mockSendMessage
     });

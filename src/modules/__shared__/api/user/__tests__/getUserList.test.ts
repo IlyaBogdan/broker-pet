@@ -12,6 +12,7 @@ describe('Test for API request getUserList()', () => {
     fetchMock.mock({
       url,
       method: 'GET',
+      overwriteRoutes: false,
       
       response: mockGetUserList
     });

@@ -13,6 +13,8 @@ describe('Test for API request getChatInfo()', () => {
     fetchMock.mock({
       url,
       method: 'GET',
+      overwriteRoutes: false,
+      
       response: mockGetChatInfo
     });
     

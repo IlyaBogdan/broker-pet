@@ -10,5 +10,5 @@ import { TGetChatInfoResponse } from "./dto/response";
  * @returns {Promise<TGetChatInfoResponse>}
  */
 export const getChatInfo = (params: TGetChatInfoParams): Promise<TGetChatInfoResponse> => {
-    return request(`/chat/${params.chatId}`, params, ERequestMethods.GET);
+    return request(`/chat/${params.chatId}`, {}, ERequestMethods.GET);
 };

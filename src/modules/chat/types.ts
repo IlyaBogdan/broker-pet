@@ -1,4 +1,3 @@
-import { ChatDto } from "./dto/chat"
 import { UserDto } from "./dto/user"
 
 export type TPullBrokerMessageFormat = {

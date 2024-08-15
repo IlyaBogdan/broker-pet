@@ -4,7 +4,7 @@ import { ChatBroker } from '..';
 import { IChatBrokerMessage } from '../message';
 import fetchMock from 'fetch-mock';
 import { EChatResponses } from '../response';
-import { mockChatList, mockOnlineUsers } from '../__mocks__/chatList.mock';
+import { mockChatList, mockOnlineUsers } from '../__mocks__/chatList';
 import { mockUser_1 } from '@mocks/chat/users';
 
 const userToken = '345678iaisdauh';
@@ -18,6 +18,7 @@ describe('Test for API methods of ChatBroker (`chatList`)', () => {
     fetchMock.mock({
       url,
       method: 'GET',
+      overwriteRoutes: false,
       
       response: mockChatList
     });

@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import fetchMock from 'fetch-mock';
 import { BACKEND_URL } from '@src/utils/backendRequest';
-import { mockUserInfo } from '../__mocks__/pull.mock';
+import { mockUserInfo } from '../__mocks__/pull';
 import { ChatBroker } from '..';
 import { EChatResponses } from '../response';
 import { IChatBrokerMessage } from '../message';
@@ -17,6 +17,7 @@ describe('Test for API methods of ChatBroker (`pull`)', () => {
     fetchMock.mock({
       url,
       method: 'GET',
+      overwriteRoutes: false,
       
       response: mockUserInfo
     });

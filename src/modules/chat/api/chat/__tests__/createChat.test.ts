@@ -19,6 +19,7 @@ describe('Test for API request createChat()', () => {
       url,
       method: 'POST',
       body: params,
+      overwriteRoutes: false,
 
       response: mockCreateChat
     });

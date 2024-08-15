@@ -4,7 +4,7 @@ import { IChatBrokerMessage } from '../message';
 import { ChatBroker } from '..';
 import { BACKEND_URL } from '@src/utils/backendRequest';
 import fetchMock from 'fetch-mock';
-import { mockGetChat, mockOnlineUsers } from '../__mocks__/getChat.mock';
+import { mockGetChat, mockOnlineUsers } from '../__mocks__/getChat';
 
 const userToken = '345678iaisdauh';
 const url = `${BACKEND_URL}/api/chat/${mockGetChat.id}`;
@@ -17,6 +17,7 @@ describe('Test for API methods of ChatBroker (`getChat`)', () => {
     fetchMock.mock({
       url,
       method: 'GET',
+      overwriteRoutes: false,
       
       response: mockGetChat
     });

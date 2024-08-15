@@ -7,6 +7,9 @@ import { TGetChatMessageFormat, TPullBrokerMessageFormat } from "../types";
 import { createChat } from "../api/chat/create";
 import { getUserInfo } from "@src/modules/__shared__/api/user/get-user-info";
 import { getChatInfo } from "../api/chat/get-chat-info";
+import { getUserList } from "@src/modules/__shared__/api/user/get-user-list";
+import { getUserChats } from "../api/chat/get-user-chats";
+import { saveMessage } from "../api/chat/message/save";
 
 /**
  * Chat broker methods
@@ -103,12 +106,10 @@ export default {
      * This method accepts message from client and sends it to backend.
      * From backend we accept actual info about chat.
      * And then we send it to all active users
-     * 
-     * 
      */
     sendMessage: (body: IChatBrokerMessage, broker: ChatBroker) => {
         return new Promise((resolve, reject) => {
-            BackendAPI.saveMessage(body.chat.id, body.message)
+            saveMessage({ chatId: body.chat.id, message: body.message })
                 .then((response: ChatDto) => {
                     const onlineUsers = broker.getUsersOnline(response.users.map((user: UserDto) => user.id));
                     broker.actualizeChatInfo(response, onlineUsers.map((user: UserDto) => user.id));
@@ -128,7 +129,7 @@ export default {
      */
     chatList: (body: IChatBrokerMessage) => {
         return new Promise((resolve, reject) => {
-            BackendAPI.getUsersChats(body.user.id, body.token)
+            getUserChats({ userId: body.user.id })
                 .then((chats: Array<ChatDto>) => {
                     resolve({ method: EChatResponses.userDialogs, chats });
                 });
@@ -140,7 +141,7 @@ export default {
      */
     getUsers: (body: IChatBrokerMessage) => {
         return new Promise((resolve, reject) => {
-            BackendAPI.getUsers()
+            getUserList()
                 .then((response: Array<UserDto>) => {
                     resolve({ method: EChatResponses.setUserList, users: response });
                 });

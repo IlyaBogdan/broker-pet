@@ -14,6 +14,8 @@ describe('Test for API request getUserInfo()', () => {
       url,
       method: 'GET',
       query: { token },
+      overwriteRoutes: false,
+      
       response: mockGetUserInfo
     });
     
