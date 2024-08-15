@@ -6,6 +6,7 @@ import { EChatResponses } from "./response";
 import { TGetChatMessageFormat, TPullBrokerMessageFormat } from "../types";
 import { createChat } from "../api/chat/create";
 import { getUserInfo } from "@src/modules/__shared__/api/user/get-user-info";
+import { getChatInfo } from "../api/chat/get-chat-info";
 
 /**
  * Chat broker methods
@@ -73,7 +74,7 @@ export default {
      */
     getChat: (body: TGetChatMessageFormat, broker: ChatBroker) => {
         return new Promise((resolve, reject) => {
-            BackendAPI.getChatInfo(body.chat.id)
+            getChatInfo({ chatId: body.chat.id })
                 .then((response: ChatDto) => {
                     broker.setActiveChat(body.token, response);
                     const userIdList = response.users.map((user: UserDto) => user.id);
@@ -89,7 +90,7 @@ export default {
 
     chatClosed: (body: IChatBrokerMessage) => {
         return new Promise((resolve, reject) => {
-            BackendAPI.getChatInfo(body.chat.id)
+            getChatInfo({ chatId: body.chat.id })
                 .then((response: ChatDto) => {
                     resolve({ 
                         method: EChatResponses.ok
