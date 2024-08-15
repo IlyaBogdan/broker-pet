@@ -1,8 +1,8 @@
 import { Broker } from '@src/libs/Broker/Broker';
-import methods from './methods';
 import { BrokerMethods } from '@src/libs/Broker/types';
 import { UserDto } from '../dto/user';
 import { ChatDto } from '../dto/chat';
+import methods from './methods';
 import WebSocket from 'ws';
 
 interface IBroadcastChatMessage {

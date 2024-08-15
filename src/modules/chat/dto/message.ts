@@ -2,7 +2,7 @@ import { UserDto } from "./user"
 
 export type MessageDto = {
     id?: number,
-    user: UserDto,
+    author: UserDto,
     message: string,
     created_at: Date,
     updated_at?: Date

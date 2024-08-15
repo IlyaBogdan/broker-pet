@@ -32,8 +32,18 @@ const request = async (endpoint: string, data: any, method: ERequestMethods): Pr
 
     return fetch(`${BACKEND_URL}${endpoint}`, requestInit)
         .then((response) => {
-            return response.json();
-        })
+            if (response.ok) {
+                return {
+                    isSuccess: true,
+                    payload: response.json(),
+                }
+            } else {
+                return {
+                    isSuccess: false,
+                    error: 'something went wrong'
+                }
+            }
+        });
 }
 
 export { request, BACKEND_URL };

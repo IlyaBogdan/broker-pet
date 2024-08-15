@@ -4,12 +4,17 @@ import fetchMock from 'fetch-mock';
 import { mockMessage_1 } from '@mocks/chat/messages';
 import { mockSaveMessage } from '../__mocks__/saveMessage';
 import { saveMessage } from '../message/save';
+import { mockUser_1 } from '@mocks/chat/users';
 
 const chatId = 123;
 const url = `${BACKEND_URL}/api/chat/${chatId}/save-message`;
 const params = { 
     chatId,
-    message: mockMessage_1
+    message: {
+      message: 'hello',
+      author: mockUser_1,
+      date: '2024-08-15T15:02:17.080Z'
+    }
 };
 
 describe('Test for API request saveMessage()', () => {
