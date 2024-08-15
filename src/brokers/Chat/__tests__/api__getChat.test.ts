@@ -24,7 +24,7 @@ describe('Test for API methods of ChatBroker (`getChat`)', () => {
     const apiMethod = chatBroker.call('getUsers');
     apiMethod(message, chatBroker)
       .then((result) => {
-        const expected = { method: EChatResponses.activeChat, chat: Object.assign(mockGetChat, { online: mockOnlineUsers }) };
+        const expected = { method: EChatResponses.activeChat, chat: { ...mockGetChat, online: mockOnlineUsers } };
         assert.equal(result, expected);
       });
   });

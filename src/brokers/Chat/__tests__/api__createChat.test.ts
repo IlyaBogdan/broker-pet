@@ -32,7 +32,7 @@ describe('Test for API methods of ChatBroker (`createChat`)', () => {
       .then((result) => {
         const expected = { 
           method: EChatResponses.activeChat,
-          chat: Object.assign(mockCreateChat, { online: mockOnlineUsers })
+          chat: { ...mockCreateChat, online: mockOnlineUsers }
         }
         assert.equal(result, expected);
       });

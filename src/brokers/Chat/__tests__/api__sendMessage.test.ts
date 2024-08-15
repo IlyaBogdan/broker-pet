@@ -36,7 +36,7 @@ describe('Test for API methods of ChatBroker (`sendMessage`)', () => {
       .then((result) => {
         const expected = { 
           method: EChatResponses.activeChat,
-          chat: Object.assign(result, { online: mockOnlineUsers })
+          chat: { ...result, online: mockOnlineUsers }
         }
         assert.equal(result, expected);
       });
