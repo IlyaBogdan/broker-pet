@@ -5,13 +5,17 @@ const brokers = [
     new ChatBroker
 ];
 
+type Message = any & {
+    method: string
+}
+
 /**
  * Runs broker action
  * 
- * @param message 
+ * @param {Message} message 
  * @returns 
  */
-export const execute = (message: { method: string }) => {
+export const execute = (message: Message) => {
     let result;
 
     for (const broker of brokers) {
