@@ -1,3 +1,4 @@
+import { EChatTypes } from "@src/modules/chat/dto/chat";
 import { ChatBroker } from "../..";
 import { saveMessage } from "../../../api/chat/message/save";
 import { UserDto } from "../../../dto/user";
@@ -19,13 +20,18 @@ export const sendMessage = (body: TSendMessageType, broker: ChatBroker): Promise
         saveMessage({ chatId: body.chat.id, message: body.message })
             .then((response) => {
                 if (response.isSuccess) {
-                    const onlineUsers = broker.getUsersOnline(response.payload.users.map((user: UserDto) => user.id));
-                    broker.actualizeChatInfo(response.payload, onlineUsers.map((user: UserDto) => user.id));
+                    const chat = response.payload;
+                    const onlineUsers = broker.getUsersOnline(chat.users.map((user: UserDto) => user.id));
+                    broker.actualizeChatInfo(chat, onlineUsers.map((user: UserDto) => user.id));
+
+                    // remove after adding on backend
+                    const type = chat.users.length > 2 ? EChatTypes.CHAT : EChatTypes.DIALOG;
                     resolve({ 
                         method: EChatResponses.activeChat,
                         chat: {
                             online: onlineUsers.map((user: UserDto) => user.id),
-                            ...response.payload
+                            ...chat,
+                            type
                         }
                     });
                 } else {

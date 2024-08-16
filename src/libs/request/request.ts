@@ -39,6 +39,7 @@ export const request = async (endpoint: string, data: any, method: ERequestMetho
             payload: json,
         }
     } else {
+        console.log(response);
         return {
             isSuccess: false,
             error: 'something went wrong'

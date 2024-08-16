@@ -1,6 +1,4 @@
 import { TNewMessage } from "@src/modules/chat/broker/methods/sendMessage/message";
-import { MessageDto } from "@src/modules/chat/dto/message";
-import { UserDto } from "@src/modules/chat/dto/user";
 
 /**
  * Params for saving message
