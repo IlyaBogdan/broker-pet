@@ -1,5 +1,6 @@
 /**
  * Set user online
+ * not implemented
  * 
  * TODO: later will be shared method
  */

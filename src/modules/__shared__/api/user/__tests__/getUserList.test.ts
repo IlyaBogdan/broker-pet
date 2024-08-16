@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { BACKEND_URL } from '@src/libs/request/request';
 import fetchMock from 'fetch-mock';
-import { mockGetUserList } from '../__mocks__/getUserList';
+import { mockGetUserList, mockUserListSuccessfullyAccepted } from '../__mocks__/getUserList';
 import { getUserList } from '../get-user-list';
 
 const url = `${BACKEND_URL}/api/user/list`;
@@ -19,7 +19,7 @@ describe('Test for API request getUserList()', () => {
     
     getUserList()
         .then((result) => {
-            assert.equal(result, mockGetUserList);
+            assert.equal(result, mockUserListSuccessfullyAccepted);
         });
   });
 });
