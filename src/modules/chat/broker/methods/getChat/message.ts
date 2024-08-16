@@ -6,5 +6,5 @@ export type TGetChatMessageFormat = {
     chat: {
         id: number
     },
-    date: Date
+    date: string
 }

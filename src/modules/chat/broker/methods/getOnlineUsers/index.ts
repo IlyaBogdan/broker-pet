@@ -1,5 +1,4 @@
 import { ChatBroker } from "../..";
-import { IChatBrokerMessage } from "../../message";
 import { EChatResponses } from "../../response";
 import { TGetOnlineUsersMessage } from "./message";
 import { TGetOnlineUsersBrokerResponse } from "./response";

@@ -4,12 +4,17 @@ import { BACKEND_URL } from '@src/libs/request/request';
 import { mockUserInfo } from '../__mocks__/pull';
 import { ChatBroker } from '..';
 import { EChatResponses } from '../response';
-import { IChatBrokerMessage } from '../message';
+import { TPullBrokerMessageFormat } from '../methods/pull/message';
+import { mockUser_1 } from '@mocks/chat/users';
 
 const userToken = '345678iaisdauh';
 const url = `${BACKEND_URL}/api/user?token=${userToken}`;
 const chatBroker = new ChatBroker();
-const message: IChatBrokerMessage = { token: userToken };
+const message: TPullBrokerMessageFormat = {
+  token: userToken,
+  user: mockUser_1,
+  date: '2024-08-15T15:02:17.080Z'
+};
 
 describe('Test for API methods of ChatBroker (`pull`)', () => {
 

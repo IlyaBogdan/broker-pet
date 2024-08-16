@@ -1,16 +1,15 @@
 import { assert } from 'chai';
 import { BACKEND_URL } from '@src/libs/request/request';
 import { ChatBroker } from '..';
-import { IChatBrokerMessage } from '../message';
 import fetchMock from 'fetch-mock';
 import { EChatResponses } from '../response';
 import { mockChatList, mockOnlineUsers } from '../__mocks__/chatList';
 import { mockUser_1 } from '@mocks/chat/users';
+import { TChatListParams } from '../methods/chatList/message';
 
-const userToken = '345678iaisdauh';
 const url = `${BACKEND_URL}/api/chat/list?user=${mockUser_1.id}`;
 const chatBroker = new ChatBroker();
-const message: IChatBrokerMessage = { token: userToken };
+const message: TChatListParams = { user: mockUser_1 };
 
 describe('Test for API methods of ChatBroker (`chatList`)', () => {
 

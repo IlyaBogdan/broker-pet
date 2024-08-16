@@ -1,18 +1,19 @@
 import { assert } from 'chai';
-import { IChatBrokerMessage } from '../message';
 import { ChatBroker } from '..';
 import { EChatResponses } from '../response';
 import { mockChat_1 } from '@mocks/chat/chats';
-import { mockUser_1, mockUser_2 } from '@mocks/chat/users';
+import { mockUser_1 } from '@mocks/chat/users';
+import { TSetTypingBrokerMessage } from '../methods/setTyping/message';
 
 const userToken = '345678iaisdauh';
 const chatBroker = new ChatBroker();
-const message: IChatBrokerMessage = { 
+const message: TSetTypingBrokerMessage = {
+  method: 'setTyping',
   token: userToken,
-  chat: {
-    id: mockChat_1.id,
-    users: [mockUser_1.id, mockUser_2.id],
-  }
+  chat: mockChat_1,
+  date: '2024-08-15T15:02:17.080Z',
+  user: mockUser_1,
+  typing: true,
 };
 
 describe('Test for API methods of ChatBroker (`setTyping`)', () => {

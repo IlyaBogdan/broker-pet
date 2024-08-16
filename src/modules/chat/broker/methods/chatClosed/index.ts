@@ -1,11 +1,10 @@
 import { getChatInfo } from "../../../api/chat/get-chat-info";
-import { IChatBrokerMessage } from "../../message";
 import { EChatResponses } from "../../response";
 
 /**
  * not implemented
  */
-export const chatClosed = (body: IChatBrokerMessage) => {
+export const chatClosed = (body) => {
     return new Promise((resolve, reject) => {
         getChatInfo({ chatId: body.chat.id })
             .then((response) => {
