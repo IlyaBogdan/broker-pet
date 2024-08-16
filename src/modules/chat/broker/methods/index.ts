@@ -1,4 +1,5 @@
 import { chatClosed } from "./chatClosed";
+import { chatList } from "./chatList";
 import { createChat } from "./createChat";
 import { getChat } from "./getChat";
 import { getOnlineUsers } from "./getOnlineUsers";
@@ -17,5 +18,6 @@ export default {
     getUsers,
     sendMessage,
     setOnline,
-    setTyping
-}
+    setTyping,
+    chatList
+};

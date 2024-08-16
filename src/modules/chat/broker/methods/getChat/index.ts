@@ -18,18 +18,26 @@ import { TGetChatResponse } from "./response";
  * @param {ChatBroker} broker
  * @returns {Promise<TGetChatResponse>}
  */
-export const getChat = (body: TGetChatMessageFormat, broker: ChatBroker): Promise<TGetChatResponse> => {
-    return new Promise((resolve, reject) => {
+export const getChat = (
+    body: TGetChatMessageFormat,
+    broker: ChatBroker
+): Promise<TGetChatResponse> => {
+    return new Promise((resolve) => {
         getChatInfo({ chatId: body.chat.id })
             .then((response) => {
                 if (response.isSuccess) {
-                    broker.setActiveChat(body.token, response.payload);
-                    const userIdList = response.payload.users.map((user: UserDto) => user.id);
+                    console.log(response.payload);
+                    const chat = response.payload;
+                    broker.setActiveChat(body.token, chat);
+                    const userIdList = chat.users.map((user: UserDto) => user.id);
                     const onlineUsers = broker.getUsersOnline(userIdList).map(user => user.id);
-                    broker.actualizeChatInfo(response.payload, onlineUsers);
+                    broker.actualizeChatInfo(chat, onlineUsers);
                     resolve({ 
                         method: EChatResponses.activeChat,
-                        chat: { online: onlineUsers, ...response.payload }
+                        chat: {
+                            online: onlineUsers,
+                            ...chat
+                        }
                     });
                 } else {
                     //

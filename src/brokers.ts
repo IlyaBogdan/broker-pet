@@ -11,18 +11,20 @@ const brokers = [
  * @param message 
  * @returns 
  */
-const execute = (message: { method: string }) => {
+export const execute = (message: { method: string }) => {
     let result;
 
     for (const broker of brokers) {
         if (broker.methodExists(message.method as keyof BrokerMethods)) {
-            console.log(`Runnning: ${message.method}`);
-            const closure = broker.call(message.method as keyof BrokerMethods);
-            result = closure(message);
+            try {
+                console.log(`Runnning: ${message.method}`);
+                const closure = broker.call(message.method as keyof BrokerMethods);
+                result = closure(message);
+            } catch (e) {
+                console.error(e);
+            }
         }
     }
 
     return result;
-}
-
-export { execute };
+};

@@ -58,7 +58,7 @@ const WebSocketEntry = (() => {
             else {
                 await request('', {}, ERequestMethods.POST)
                     .then((response) => {
-                        store.put('accessToken', response.access_token);
+                        store.put('accessToken', response.payload.access_token);
                         server = new WebSocketServer({ port: PORT });
                         console.log(`WebSocket is running on ${PORT} port`);
                         server.on('connection', function (ws) {

@@ -183,6 +183,7 @@ export class WsSession {
 
 /**
  * Store for users connections
+ * @todo connect redis later
  */
 export class SessionStore {
 

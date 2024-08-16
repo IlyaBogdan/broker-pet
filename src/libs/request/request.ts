@@ -1,11 +1,11 @@
-import fetch from 'node-fetch';
+import fetch, { RequestInit } from 'node-fetch';
 import { ERequestMethods } from '../../utils/ERequestMethods';
 var Storage = require('node-storage');
 
 const store = new Storage('./store.json');
-
-const BACKEND_URL: string = `${process.env.BACKEND_URL}/api/broker`;
 const BROKER_TOKEN: string|null = store.get('access_token');
+
+export const BACKEND_URL: string = `${process.env.BACKEND_URL}/api/broker`;
 
 /**
  * Request to backend from broker
@@ -15,8 +15,8 @@ const BROKER_TOKEN: string|null = store.get('access_token');
  * @param { ERequestMethods } method request method
  * @returns {Promise<any>}
  */
-const request = async (endpoint: string, data: any, method: ERequestMethods): Promise<any> => {
-    let requestInit = {
+export const request = async (endpoint: string, data: any, method: ERequestMethods): Promise<any> => {
+    const requestInit: RequestInit = {
         method,
         headers: {
             'Content-Type': 'application/json',
@@ -27,24 +27,21 @@ const request = async (endpoint: string, data: any, method: ERequestMethods): Pr
         requestInit.headers['X-Broker-Token'] = BROKER_TOKEN;
     }
     
-    if (['GET', 'HEAD'].indexOf(method) == -1) {
-        requestInit['body'] = JSON.stringify(data);
+    if (![ERequestMethods.GET, ERequestMethods.HEAD].includes(method)) {
+        requestInit.body = JSON.stringify(data);
     }
 
-    return fetch(`${BACKEND_URL}${endpoint}`, requestInit)
-        .then((response) => {
-            if (response.ok) {
-                return {
-                    isSuccess: true,
-                    payload: response.json(),
-                }
-            } else {
-                return {
-                    isSuccess: false,
-                    error: 'something went wrong'
-                }
-            }
-        });
-}
-
-export { request, BACKEND_URL };
+    const response = await fetch(`${BACKEND_URL}${endpoint}`, requestInit);
+    if (response.ok) {
+        const json = await response.json();
+        return {
+            isSuccess: true,
+            payload: json,
+        }
+    } else {
+        return {
+            isSuccess: false,
+            error: 'something went wrong'
+        }
+    }
+};
